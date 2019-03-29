@@ -8,7 +8,7 @@
     
 
     <% @posts.each do |post| %>
-      <p><%= post.message %></p>
+      <p><%= post.message %>:    <%= post.created_at.strftime('%d-%m-%Y') %></p>
     <% end %>
   
     <%= link_to new_post_path do %>
