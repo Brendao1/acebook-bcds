@@ -11,3 +11,10 @@
     <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
     <% end %>
   </p>
+  <% @posts.each do |post| %>
+    <p><%= post.message %></p>
+  <% end %>
+
+  <%= link_to new_post_path do %>
+    New post
+  <% end %>
