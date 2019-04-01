@@ -4,7 +4,7 @@ Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
   <% @posts.each do |post| %>
 
-    <p><%= post.message %>:    <%= post.created_at.strftime('%d-%m-%Y') %></p>
+    <p><%= post.message %>:    <%= post.created_at.strftime('%d-%m-%Y') %></p> 
 
   <% end %>
   <%= link_to new_post_path do %>

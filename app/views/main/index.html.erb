@@ -9,6 +9,7 @@
   
     <% @posts.each do |post| %>
       <p><%= post.message %>:    <%= post.created_at.strftime('%d-%m-%Y') %></p>
+      <%= button_to "Like", new_like_url%>
     <% end %>
   
     <%= link_to new_post_path do %>

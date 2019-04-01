@@ -4,4 +4,9 @@ Rails.application.routes.draw do
 
   resources :posts
   root to: 'main#index'
+
+  resources :likes
+  # why is this plural and not 'like'
+  # root to: 'likes#index'
+
 end
