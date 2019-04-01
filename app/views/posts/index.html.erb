@@ -2,14 +2,19 @@
 Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% @posts.each do |post| %>
-
-    <p><%= post.message %>:    <%= post.created_at.strftime('%d-%m-%Y') %></p>
-
-  <% end %>
+  
+  <hr>
   <%= link_to new_post_path do %>
     <p>New post</p>
   <% end %>
+  <hr>
+
+  <% @posts.each do |post| %>
+
+    <p><%= simple_format(post.message).html_safe %>  <%= post.created_at.strftime('%d-%m-%Y') %></p>
+    <hr>
+  <% end %>
+
 <% else %>
 <p>Please sign up or login to use Acebook!</p>
 <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
