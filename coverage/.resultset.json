@@ -3,14 +3,14 @@
     "coverage": {
       "/Users/student/Documents/Projects/acebook-bcds/spec/web_helpers.rb": [
         1,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
         null
       ],
       "/Users/student/Documents/Projects/acebook-bcds/spec/controllers/main_controller_spec.rb": [
@@ -582,7 +582,7 @@
       "/Users/student/Documents/Projects/acebook-bcds/app/controllers/main_controller.rb": [
         1,
         1,
-        15,
+        18,
         null,
         null
       ],
@@ -726,6 +726,7 @@
         1,
         1,
         1,
+        1,
         null,
         null,
         1,
@@ -733,12 +734,13 @@
         1,
         1,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         1,
         1,
         null,
@@ -810,6 +812,6 @@
         null
       ]
     },
-    "timestamp": 1554117137
+    "timestamp": 1554117970
   }
 }
