@@ -27,3 +27,4 @@ app/controllers/.DS_Store
 app/.DS_Store
 .env
 
+/coverage/*
