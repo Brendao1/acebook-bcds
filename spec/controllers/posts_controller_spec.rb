@@ -39,4 +39,5 @@ RSpec.describe PostsController, type: :controller do
       expect(Post.find_by(message: "Different message") ).to be
     end
   end
+
 end
