@@ -6,5 +6,6 @@ def sign_up_bob
   fill_in "Email", with: user_email
   fill_in "Password", with: user_password
   fill_in "Password confirmation", with: user_password
-  click_button "Sign up" 
+  click_button "Sign up"
+  User.all[0]
 end
