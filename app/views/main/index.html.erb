@@ -10,13 +10,14 @@
     <hr>
     <%= link_to new_post_path do %>
       New post
-    <% end %>  
+    <% end %>
     <hr>
     <% @posts.each do |post| %>
       <p><%= simple_format(post.message).html_safe %> <%= post.created_at.strftime('%d-%m-%Y') %></p>
+      <%= link_to "Update", edit_post_path(post) %>
       <hr>
     <% end %>
-  
+
     <% else %>
     <p>Please sign up or login to use Acebook!</p>
       <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |

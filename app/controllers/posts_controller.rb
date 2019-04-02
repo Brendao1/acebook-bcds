@@ -12,6 +12,10 @@ class PostsController < ApplicationController
     @posts = Post.all.order('created_at DESC')
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   private
   def post_params
     params.require(:post).permit(:message, :user_id)
