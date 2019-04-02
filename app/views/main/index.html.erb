@@ -13,7 +13,10 @@
   <% end %>
   <hr>
   <% @posts.each do |post| %>
-  <p><%= simple_format(post.message).html_safe %> <%= post.created_at.strftime('%d-%m-%Y') %></p>
+  <p>
+    <%= simple_format(post.message).html_safe %>
+    [User <%= post.user_id %>] at <%= post.created_at.strftime('%d-%m-%Y') %>
+  </p>
   <%= link_to "Update", edit_post_path(post) %>
   <%= link_to "Delete", post_path(post), method: :delete %>
   <hr>
