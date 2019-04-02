@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.update(post_params)
+    @post = Post.update(post_creator_params)
     redirect_to root_url
   end
 
@@ -29,6 +29,10 @@ class PostsController < ApplicationController
 
   private
   def post_params
+    params.require(:post).permit(:message, :user_id)
+  end
+
+  def post_creator_params
     params.require(:post).permit(:message, :user_id)
   end
 end
