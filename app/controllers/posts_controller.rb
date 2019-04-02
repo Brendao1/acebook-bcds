@@ -16,6 +16,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def update
+    @post = Post.update(post_params)
+    redirect_to root_url
+  end
+
   private
   def post_params
     params.require(:post).permit(:message, :user_id)
