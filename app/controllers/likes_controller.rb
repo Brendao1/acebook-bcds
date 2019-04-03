@@ -1,17 +1,30 @@
 class LikesController < ApplicationController
-  before_action :find_post
+  before_action :find_post, :find_like
 
   def create
-    @post.likes.create(user_id: current_user.id)
+    if already_liked?
+       destroy
+    else
+       @post.likes.create(user_id: current_user.id)
+    end
     redirect_to root_url
   end
 
   def destroy
-    @post.likes.destroy(user_id: current_user.id)
+    @like.destroy
+    redirect_to root_url
   end
 
-  private
+  def already_liked?
+    Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?
+  end
+
+private
   def find_post
     @post = Post.find(params[:post_id])
+  end
+
+  def find_like
+    @like = Like.find(params[:id])
   end
 end

@@ -17,25 +17,23 @@
     <%= simple_format(post.message).html_safe %>
     [User <%= post.user_id %>] at <%= post.created_at.strftime('%d-%m-%Y') %>
     <%= post.likes.all.length %>
-   <% # if post.likes.find(:user_id => current_user.id) != true %>
-   <% if Like.where(user_id: current_user.id, post_id: post.id).exists? %>
-    <%= link_to "💚", post_like_path(post), :id => 'Unlike' %>
-    <% else %>
-    <%= link_to "👍🏻", post_likes_path(post), method: :post, :id => 'Like' %>
-   <% end %> 
-
+    <%= link_to "👍", post_likes_path(post), method: :post, :id => 'Like' %>
+    <% like = Like.where(user_id: current_user.id, post_id: params[:post_id]) %>
+    <% if like.exists? %>
+      <%= link_to "👎🏻", post_like_path(post, like), method: :delete, :id => 'Unlike' %>
+    <% end %>
   </p>
 
-    <% if current_user.id == post.user_id %>
-      <%= link_to "Update", edit_post_path(post) %>
-      <%= link_to "Delete", post_path(post), method: :delete %>
-      <hr>
+  <% if current_user.id == post.user_id %>
+    <%= link_to "Update", edit_post_path(post) %>
+    <%= link_to "Delete", post_path(post), method: :delete %>
+    <hr>
     <% end %>
   <% end %>
 
   <% else %>
-  <p>Please sign up or login to use Acebook!</p>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <p>Please sign up or login to use Acebook!</p>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
   <% end %>
 </p>
