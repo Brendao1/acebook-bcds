@@ -6,7 +6,9 @@ class LikesController < ApplicationController
     redirect_to root_url
   end
 
-
+  def destroy
+    @post.likes.destroy(user_id: current_user.id)
+  end
 
   private
   def find_post

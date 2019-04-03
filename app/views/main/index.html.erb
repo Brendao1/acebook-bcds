@@ -17,8 +17,13 @@
     <%= simple_format(post.message).html_safe %>
     [User <%= post.user_id %>] at <%= post.created_at.strftime('%d-%m-%Y') %>
     <%= post.likes.all.length %>
-    <%= link_to "👍", post_likes_path(post), method: :post, :id => 'Like' %>
-    
+   <% # if post.likes.find(:user_id => current_user.id) != true %>
+   <% if Like.where(user_id: current_user.id, post_id: post.id).exists? %>
+    <%= link_to "💚", post_like_path(post), :id => 'Unlike' %>
+    <% else %>
+    <%= link_to "👍🏻", post_likes_path(post), method: :post, :id => 'Like' %>
+   <% end %> 
+
   </p>
 
     <% if current_user.id == post.user_id %>
