@@ -6,6 +6,6 @@ RSpec.feature "User can like a post", type: :feature do
     post = Post.create(message: "abcdefg", user_id: another_user.id)
     user = sign_up_bob
     click_link "Like"
-    expect(page).to have_content("1 like")
+    expect(page).to have_content("1 👍")
   end
 end

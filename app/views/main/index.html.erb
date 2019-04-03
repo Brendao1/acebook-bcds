@@ -16,8 +16,11 @@
   <p>
     <%= simple_format(post.message).html_safe %>
     [User <%= post.user_id %>] at <%= post.created_at.strftime('%d-%m-%Y') %>
+    <%= post.likes.all.length %>
     <%= link_to "👍", post_likes_path(post), method: :post, :id => 'Like' %>
+    
   </p>
+
     <% if current_user.id == post.user_id %>
       <%= link_to "Update", edit_post_path(post) %>
       <%= link_to "Delete", post_path(post), method: :delete %>
