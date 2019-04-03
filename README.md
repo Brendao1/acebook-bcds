@@ -26,6 +26,34 @@ First, clone this repository. Then:
 > bundle exec rspec # Run the tests to ensure it works
 > bin/rails server # Start the server at localhost:3000
 ```
+## Project Criteria
+
+## Testing
+ 90% or greater test coverage.
+ Unit tests:
+ test one piece of your own logic.
+ fail if that logic breaks.
+ pass if it that logic produces the expected result.
+ You can articulate why any test exists (or does not exist).
+ Every feature is tested from the user's perspective.
+## Good distribution of work
+ Your team co-owns the code. Every member of the team can:
+ explain why any part of the application exists (what user need it solves).
+ explain how any aspect of the application works.
+ Every member of the team has made commits.
+ Every completed ticket has a closed (or merged) Pull Request.
+## Quality of work
+ Commit messages are clear and composed of:
+ a single line describing the changes made.
+ a description of the problem it solves, with reference to the user.
+ The Linter passes on all commits.
+ All commits have a low complexity score.
+ All pull requests are peer reviewed.
+## Documentation
+ There is up-to-date documentation:
+ a project description.
+ how to install and run it.
+ how to run tests.
 
 ## References
 
