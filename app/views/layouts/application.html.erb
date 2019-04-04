@@ -3,24 +3,36 @@
 <head>
   <title>Acebook</title>
   <%= csrf_meta_tags %>
-  
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
 
 <body>
-  
+
   <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
-    <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    
-    
+
+
+    <div class="container">
+      <nav>
+        <div class="nav-wrapper blue-grey darken-1">
+            <% if user_signed_in? %>
+              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <% end %>
+        </div>
+      </nav>
+      <h1>Acebook</h1>
+      <div>Welcome to Acebook!</div>
+      <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
     <%= yield %>
+    </div>
   </body>
   </html>
-  
