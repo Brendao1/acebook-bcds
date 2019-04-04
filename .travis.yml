@@ -1,21 +1,22 @@
 rvm: 2.6.0
 services:
 - postgresql
-script:
-- mkdir -p spec && bundle exec rspec spec
+
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq postgresql-server-dev-9.3
 - gem update --system
 - gem install bundler
-before_script:
-- psql -c 'create database pgapp_test;' -U postgres
-- psql -d pgapp_test -c 'CREATE TABLE "posts" ("id" SERIAL PRIMARY KEY, "message"
-  VARCHAR(200), "created_at" TIMESTAMP, "updated_at" TIMESTAMP);'
+# before_script:
+# - psql -c 'create database pgapp_test;' -U postgres
+script:
+- bundle exec rails db:create RAILS_ENV=test
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rake spec
 deploy:
   provider: heroku
   api_key:
-    secure: jo1R3ma409JhsL/iAB7sFHT7AEBAlLOaqDRrFAN+wRmyZ0gCys0klolu38HwNCuvZDwPlg1+zQdp6ODQPgnt910gU/OOZUPEg+ISpTKKtZ/2EnfQO9lmC50mczlgBdj1h91PnkJNCg2e+VF4KzZ3PhTCjlQLSlsz0jw3/TcXllQSq9vNT9MSv1Z0vOvAYA+aITA1jI1iN/RzDJOpDIqyRXNs6NJ5sVrQepKap5iiEJBU7HoMRYHuaguFwETQUtlGkhaViyyHRcmSDLPGuJZmhgLwni/9qnVtyabT/cuJkMCwnEopwZwo4PeO2OJfJSCEk4D2JtOKqruFpcwast/G/q/eTp4UU5YJsC9TZjT5UwZXLmQSOzcuMmWW7ZfLlUUJkymCshiWJbcKiH/5mryKNSM5v61o+xdLfUqnhdJzp/TuBRC/5E7/ZHyAGjv6mVBlSuYRKtnI09n9UwCyUd4V4yvY5QrZYcZYgiWSDFcwtuKcrC7+C7htgope6r14fl/uQLJKpdf/MiuLaebjM4ryGx4PH3fMU+mXZ3IiEczC8qbZ1kwf1ERg1c6mT6MJcYrFe7lbDfmCNP6kgElV5iYUERuQJ5Ejc7PSegoH1qy5IC7AFpgLrvmVPRYEJU/qn23bQl4zgKCUK34/2ceojC7gkBzwD0QgOoY07f5QnYJTPgM=
+    secure: TSZ35iQcSW2GC8J6kuge5XJbWldbWQZ3biQTrDe+ygQLLO3XSJGZTR1Vmv6X75NAw0o5VlUl6ao4GimAYe9NDmt2v1Lmfg7hsyCl2hiIWPRQu56ZE+ry/nL5g0lxOjtj7UcY4GpK9ZeWPntCz2fDBQlzHKoqEr21T98pPaA7BCxJ8qQrhtlduSkawNZVNtId6rsSqvtMsAEXYgkS3p4jP4F/YKJZ/0Kx2531ALYsgF1QN4/+U4uY2Aq7HehZer1KIaAobWOGuMQpz+ugO9kXh0uvAbLInyF37kO+4H7mytUJpFMRykSlnouWvmG7x/iUR9hb5gJ7bQ7oyHdzhW4UNM5DhAK7BRoaBnpQ7wcfyF+KjujFvMZ5C0otPYn1PUPzppXE8f+Xl8QIfNDQIzW5cuFrdW09VpShYHtcVVP+GP+bWeqSUrYv4pfuaJORh2g71ZosjrDZVc+3BZSp01ZT83mTWLg3MEW8gKO6xxILCHt4hgJKQCqIbr7ufngl5mGmqiHt7xapTlxmsOlTTzoSG0Y+oO0jg/LXRGY6sKFG1WI4EeWFspWnDMaAFFVh81/IWXK6sVkk8zgj4wVtlLISHzQChpHpzTMAse+SeN5PKznlya1rNdVN0w8jNDtY8g5jNTRlFRMr1zz5EpBnWDRodmRKdUWywbkMDkCCpcC1cBQ=
   app: acebook-bcds
   on:
     repo: soroushh/acebook-bcds
