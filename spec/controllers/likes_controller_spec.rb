@@ -11,4 +11,13 @@ RSpec.describe LikesController, type: :controller do
     end
   end
 
+  describe " Destroy " do
+    it "We can remove a like" do
+      user = User.create(email: "A@a.com", password: "123456789")
+      post = Post.create(message: "hey", user_id: user.id)
+      like = Like.create(user_id: user.id , post_id: post.id)
+      like.destroy()
+      expect(Like.all.length).to eq 0
+    end
+  end
 end
