@@ -1,17 +1,22 @@
 require 'rails_helper'
 
 RSpec.feature "View posts", type: :feature do
-    user_email = "bob@bob.com"
-    user_password = "1234567890"
     scenario "posts are viewed when user signs up" do
-        post = Post.create(message: "abcdefg")
-        visit "/"
-        click_link "Sign up"
-        fill_in "Email", with: user_email
-        fill_in "Password", with: user_password
-        fill_in "Password confirmation", with: user_password
-        length =  User.all.length
-        click_button "Sign up"
+        another_user = User.create(email: 'another@a.com', password: "1234567890")
+        post = Post.create(message: "abcdefg", user_id: another_user.id)
+        user = sign_up_bob
         expect(page).to have_content("abcdefg")
     end
+    scenario "users's own posts are viewed when user signs up" do
+        user = sign_up_bob
+        click_link "Logout"
+        bobs_post = Post.create(message: "bob's post", user_id: user.id)
+        visit '/'
+        click_link "Login"
+        fill_in "Email", with: "bob@bob.com"
+        fill_in "Password", with: "1234567890"
+        click_button "Log in"
+        expect(page).to have_content("bob's post")
+    end
+
 end

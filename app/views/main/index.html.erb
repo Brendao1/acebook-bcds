@@ -1,22 +1,43 @@
 <h1>Acebook</h1>
 <div>Welcome to Acebook!</div>
-  <p class="navbar-text pull-right">
-    <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
+<p class="navbar-text pull-right">
+  <% if user_signed_in? %>
 
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  
-    <% @posts.each do |post| %>
-      <p><%= post.message %>:    <%= post.created_at.strftime('%d-%m-%Y') %></p>
-    <% end %>
-  
-    <%= link_to new_post_path do %>
-      New post
-    <% end %>
+  Logged in as <strong><%= current_user.email %></strong>.
+
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <hr>
+  <%= link_to new_post_path do %>
+  New post
+  <% end %>
+  <hr>
+  <% @posts.each do |post| %>
+  <p>
+    <%= simple_format(post.message).html_safe %>
+    <%= post.user.email %> at <%= post.created_at.strftime('%d-%m-%Y') %>
+    <%= post.likes.all.length %>
+
+    <% my_like = Like.where(user_id: current_user.id, post_id: post.id)%>
+
+    <% if my_like.exists? %>
+      
+      <%= link_to "👍", post_like_path(post, my_like), method: :delete, :id => 'Like' %>
     <% else %>
-    <p>Please sign up or login to use Acebook!</p>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <%= link_to "👍", post_likes_path(post), method: :post, :id => 'Like' %>
     <% end %>
   </p>
+
+    <% if current_user.id == post.user_id %>
+      <%= link_to "Update", edit_post_path(post) %>
+      <%= link_to "Delete", post_path(post), method: :delete %>
+    <% end %>
+    <hr>
+  <% end %>
+
+  <% else %>
+    <p>Please sign up or login to use Acebook!</p>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+</p>
