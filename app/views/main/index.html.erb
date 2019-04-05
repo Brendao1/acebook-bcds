@@ -9,7 +9,7 @@
   <% @posts.each do |post| %>
     <p>
       <div class="center-align card-panel">
-      <div class="flow-text" style="font-size :17px; text-align:justify">
+      <div class="flow-text" style="text-align: justify; text-align-last: center; font-size :17px;">
       <%= simple_format(post.message).html_safe %>
       </div>
       <div style="font-size: 13px">
