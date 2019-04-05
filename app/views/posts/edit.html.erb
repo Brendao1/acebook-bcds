@@ -2,5 +2,5 @@
   <%= form.label :message %>
   <%= form.hidden_field :user_id, :value => @post.user_id %>
   <%= form.text_area :message %>
-  <%= form.submit "Submit" %>
+  <div class="waves-effect waves-light btn-large"><%= form.submit "Submit" %></div>
 <% end %>

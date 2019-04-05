@@ -12,7 +12,7 @@ RSpec.feature "Sign up", type: :feature do
         length =  User.all.length
         click_button "Sign up"
         expect(page).to have_content("Welcome! You have signed up successfully.")
-        expect(page).to have_content("Logged in as #{user_email}.")
+        expect(page).to have_content("Logged in as #{user_email}")
         expect(User.all.length).to eq (length +1 )
     end
 end
