@@ -8,12 +8,13 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    #Like.destroy(@like.ids) # previous solution 
+    # Like.destroy(@like.ids) # previous solution
     @like.destroy
     redirect_to root_url
   end
 
-private
+  private
+
   def find_post
     @post = Post.find_by(id: params[:post_id])
   end

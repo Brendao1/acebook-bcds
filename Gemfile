@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -13,7 +13,7 @@ gem 'rails', '~> 5.1.1'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-gem 'rubocop', '~> 0.39.0', require: false 
+gem 'rubocop', '~> 0.39.0', require: false
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,8 +40,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
-  gem 'simplecov', :require => false
-
+  gem 'simplecov', require: false
 end
 
 group :development do
