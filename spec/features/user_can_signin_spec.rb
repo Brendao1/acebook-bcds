@@ -9,7 +9,7 @@ RSpec.feature "Sign in", type: :feature do
         fill_in "Password", with: user_password
         click_button "Log in"
         expect(page).to have_content("Signed in successfully.")
-        expect(page).to have_content("Logged in as #{user_email}.")
+        expect(page).to have_content("Logged in as #{user_email}")
     end
 
     scenario "user cannot see posts if not signed in" do

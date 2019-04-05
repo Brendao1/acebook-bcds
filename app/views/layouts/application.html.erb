@@ -3,24 +3,44 @@
 <head>
   <title>Acebook</title>
   <%= csrf_meta_tags %>
-  
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
 
-<body>
-  
-  <!-- <p class="notice"><%= notice %></p>
+<body class="#e0f2f1 teal lighten-5">
+
+
+ <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
-    <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    
-    
+
+    <div class="container"> <!--container-->
+      <nav>
+        <div class="nav-wrapper #01579b light-blue darken-4">
+            <% if user_signed_in? %>
+
+            &nbsp<div class="waves-effect waves-light btn"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></div>
+            &nbsp<div class="waves-effect waves-light btn"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></div>
+            <div class="right">Logged in as <strong><%= current_user.email %>&nbsp</strong></div>
+            <% end %>
+        </div>
+      </nav>
+
+
+
+
+      <div class="center-align">
+          <h1 style="font-family: GillSans">Acebook</h1>
+          <div style="font-family: GillSans, font-size: 15px">Welcome to Acebook!</div>
+          <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+      </div>
+
     <%= yield %>
+    </div> <!--container-->
   </body>
   </html>
-  
