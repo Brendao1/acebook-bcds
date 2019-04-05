@@ -1,6 +1,9 @@
 rvm: 2.6.0
 services:
 - postgresql
+env:
+    global:
+    - CC_TEST_REPORTER_ID=03d059da1e25744ab9777dfc22a49db7d06ffbe6d40fc434909a66035dad5637
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq postgresql-server-dev-9.3
