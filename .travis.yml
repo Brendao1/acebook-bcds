@@ -2,31 +2,28 @@ rvm: 2.6.0
 services:
 - postgresql
 env:
-    global:
-    - CC_TEST_REPORTER_ID=03d059da1e25744ab9777dfc22a49db7d06ffbe6d40fc434909a66035dad5637
+  global:
+  - CC_TEST_REPORTER_ID=03d059da1e25744ab9777dfc22a49db7d06ffbe6d40fc434909a66035dad5637
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq postgresql-server-dev-9.3
 - gem update --system
 - gem install bundler
-
 before_script:
-- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 - "./cc-test-reporter before-build"
-
 script:
 - bundle exec rails db:create RAILS_ENV=test
 - bundle exec rails db:migrate RAILS_ENV=test
 - bundle exec rake spec
-
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
-
 deploy:
   provider: heroku
   api_key:
-    secure: A1wXesHvW2b4MWCxj0oCN1zhFa081wv3EQ7Z9YAZ5Vy4e7rahbyvInCdb5PIUxDv9KQXjBXMxVf5vaMXAcj03GZ4jOTyW9JB3vsYHZEqQVP8DTf/jWm3gCuJPIWKU/Nfz784431RP9BhtIqwM7SPoYzdPHqXQEqDnN7ZfPltIMUTe1YKi19cloB1glNEN7Hr+rQ/quZ8shzTQ989hvJbCP8RaqKiXDYwdZ7Dp6jmjQP16VwBQ9IrntYmXoZG6IqrRURhs3oR5UiNdloQbu4gwfLfGUOFP7cCGSvRw4h3lhJ+jONIMzrWZ5AWzZ+Xd9V0ZcEYIIBfQYGmnsMXGynQZUknESW7rOSRYea/175o4v0sB3ASgKgeQhtXmfe4NQkzntc1hYNzFA4WbwDXocMvtFBHdgPkt3xUqIQzuc++vyoLq2drwFeKLwoE53zz0fw6HIVmRqTWum2BEEhYyeHvjTEU5ez+nDW4hnOE1yPliPJ708o7g21AJ3B2yzEMhXLjoeyeutmfiAi/d1vfYb50VCYxl9lKekihKB48FsixgPSjN35zNaGMMGpvB5iEvD1Icftk3uv7WxBk95j3PqvqhrBFnpVeG1wTSY07PdjeFckPe/FdbSBTpy1M7G3PJ2v26rwiVjGN3Rsng+OPhE1EJGXIWndMtmC3FrqORR4HXdM=
+    secure: pjI2UVeu+6/vg5fsSiq9RRbryGjuUS3wPZQalRm8yv2rVnwi/3/XETsOYCWCDli1czXd646NMFyRRCYrJn3c013voC9ImhpsuB7lrNWQUsHOEmc6Xj6kM7QKyGxH1tJw3iyl201sB8FmXAswIkpaWfX6n8OL1DjVj16XPYijFSbm7kqtXDsGRsztAP/mRN/T4b3IwpVz5BX8IQi6eVvf8iiUhlHAowPWMgv50+dcEd68QTwLNywrPZaGlaoT5hn4050YQH0b3iuWwuWk/MaDSz1BDd8+CNiBidQtzxn1SSQMe+3JCsGdxSZJhbtXsRNrOaurpM3XOOJfSUxzCtkJRMuO4xx6u4hMSwdohJqr8Xd3QRlmiiH06uM9FRDYIuCFllWhnceQeiAwgDbkibA6VJC2uAyub7RLT7wfGm/rlQHrwxHZZ8tqWGa4lkuPpUEHyRzqSs6AKsyiaImZdeMyP/M7aO7XzS9Yaq9bN7dYs6gh0djy3gDXJ89XRY5OFtOzOof0lzNxw9S483wEMpFQl6DFhWQs7ytZO3O8l/0PoA4Y07N9DaXufkPOb9Ugkvd+gwMOzg85j/ezSdvNYmrbQynEqFb/AO3H0MTtFgfHvDnfif/sGQwG9xR4b08jSis7ddZEUHHUTy7LUQLfJgO1dAg87vCaoVrGTBHAzndTUYU=
   app: acebook-bcds
   on:
     repo: soroushh/acebook-bcds
