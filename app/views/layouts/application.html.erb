@@ -14,8 +14,7 @@
  <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
 
-
-    <div class="container">
+    <div class="container"> <!--container-->
       <nav>
         <div class="nav-wrapper #01579b light-blue darken-4">
             <% if user_signed_in? %>
@@ -26,6 +25,9 @@
             <% end %>
         </div>
       </nav>
+
+
+
 
       <div class="center-align">
           <h1 style="font-family: GillSans">Acebook</h1>
@@ -39,6 +41,6 @@
       </div>
 
     <%= yield %>
-    </div>
+    </div> <!--container-->
   </body>
   </html>
