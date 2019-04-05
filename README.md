@@ -1,3 +1,7 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/4e473be6b5cb29fe46a2/maintainability)](https://codeclimate.com/github/soroushh/acebook-bcds/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4e473be6b5cb29fe46a2/test_coverage)](https://codeclimate.com/github/soroushh/acebook-bcds/test_coverage)
+
 [![Build Status](https://travis-ci.com/soroushh/acebook-bcds.svg?branch=master)](https://travis-ci.com/soroushh/acebook-bcds)
 
 # AceBook
