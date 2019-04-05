@@ -4,6 +4,8 @@
 
 # AceBook
 
+Check out the project deployed on Heroku [here](https://acebook-bcds.herokuapp.com)!
+
 REQUIRED INSTRUCTIONS:
 
 1. Fork this repository to `acebook-teamname` and customize
