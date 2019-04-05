@@ -19,7 +19,7 @@
       <nav>
         <div class="nav-wrapper #01579b light-blue darken-4">
             <% if user_signed_in? %>
-           
+
             &nbsp<div class="waves-effect waves-light btn"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></div>
             &nbsp<div class="waves-effect waves-light btn"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></div>
             <div class="right">Logged in as <strong><%= current_user.email %>&nbsp</strong></div>
@@ -28,8 +28,8 @@
       </nav>
 
       <div class="center-align">
-          <h1>Acebook</h1>
-          <div>Welcome to Acebook!</div>
+          <h1 style="font-family: GillSans">Acebook</h1>
+          <div style="font-family: GillSans, font-size: 15px">Welcome to Acebook!</div>
           <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
           <% end %>

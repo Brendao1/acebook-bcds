@@ -2,14 +2,14 @@
 <p class="navbar-text pull-right">
   <% if user_signed_in? %>
 
-  <div class="btn-large waves-effect #fafafa grey lighten-5"> 
+  <div class="btn-large waves-effect #fafafa grey lighten-5">
   <%= link_to new_post_path do %> New post <% end %>
   </div>
 
   <% @posts.each do |post| %>
     <p>
       <div class="center-align card-panel">
-      <div class="flow-text" style="font-size :17px; text-align:justify">  
+      <div class="flow-text" style="font-size :17px; text-align:justify">
       <%= simple_format(post.message).html_safe %>
       </div>
       <div style="font-size: 13px">
