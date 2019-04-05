@@ -1,14 +1,11 @@
 rvm: 2.6.0
 services:
 - postgresql
-
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq postgresql-server-dev-9.3
 - gem update --system
 - gem install bundler
-# before_script:
-# - psql -c 'create database pgapp_test;' -U postgres
 script:
 - bundle exec rails db:create RAILS_ENV=test
 - bundle exec rails db:migrate RAILS_ENV=test
@@ -16,7 +13,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: TSZ35iQcSW2GC8J6kuge5XJbWldbWQZ3biQTrDe+ygQLLO3XSJGZTR1Vmv6X75NAw0o5VlUl6ao4GimAYe9NDmt2v1Lmfg7hsyCl2hiIWPRQu56ZE+ry/nL5g0lxOjtj7UcY4GpK9ZeWPntCz2fDBQlzHKoqEr21T98pPaA7BCxJ8qQrhtlduSkawNZVNtId6rsSqvtMsAEXYgkS3p4jP4F/YKJZ/0Kx2531ALYsgF1QN4/+U4uY2Aq7HehZer1KIaAobWOGuMQpz+ugO9kXh0uvAbLInyF37kO+4H7mytUJpFMRykSlnouWvmG7x/iUR9hb5gJ7bQ7oyHdzhW4UNM5DhAK7BRoaBnpQ7wcfyF+KjujFvMZ5C0otPYn1PUPzppXE8f+Xl8QIfNDQIzW5cuFrdW09VpShYHtcVVP+GP+bWeqSUrYv4pfuaJORh2g71ZosjrDZVc+3BZSp01ZT83mTWLg3MEW8gKO6xxILCHt4hgJKQCqIbr7ufngl5mGmqiHt7xapTlxmsOlTTzoSG0Y+oO0jg/LXRGY6sKFG1WI4EeWFspWnDMaAFFVh81/IWXK6sVkk8zgj4wVtlLISHzQChpHpzTMAse+SeN5PKznlya1rNdVN0w8jNDtY8g5jNTRlFRMr1zz5EpBnWDRodmRKdUWywbkMDkCCpcC1cBQ=
+    secure: A1wXesHvW2b4MWCxj0oCN1zhFa081wv3EQ7Z9YAZ5Vy4e7rahbyvInCdb5PIUxDv9KQXjBXMxVf5vaMXAcj03GZ4jOTyW9JB3vsYHZEqQVP8DTf/jWm3gCuJPIWKU/Nfz784431RP9BhtIqwM7SPoYzdPHqXQEqDnN7ZfPltIMUTe1YKi19cloB1glNEN7Hr+rQ/quZ8shzTQ989hvJbCP8RaqKiXDYwdZ7Dp6jmjQP16VwBQ9IrntYmXoZG6IqrRURhs3oR5UiNdloQbu4gwfLfGUOFP7cCGSvRw4h3lhJ+jONIMzrWZ5AWzZ+Xd9V0ZcEYIIBfQYGmnsMXGynQZUknESW7rOSRYea/175o4v0sB3ASgKgeQhtXmfe4NQkzntc1hYNzFA4WbwDXocMvtFBHdgPkt3xUqIQzuc++vyoLq2drwFeKLwoE53zz0fw6HIVmRqTWum2BEEhYyeHvjTEU5ez+nDW4hnOE1yPliPJ708o7g21AJ3B2yzEMhXLjoeyeutmfiAi/d1vfYb50VCYxl9lKekihKB48FsixgPSjN35zNaGMMGpvB5iEvD1Icftk3uv7WxBk95j3PqvqhrBFnpVeG1wTSY07PdjeFckPe/FdbSBTpy1M7G3PJ2v26rwiVjGN3Rsng+OPhE1EJGXIWndMtmC3FrqORR4HXdM=
   app: acebook-bcds
   on:
     repo: soroushh/acebook-bcds
