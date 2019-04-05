@@ -8,9 +8,13 @@
 
   <% @posts.each do |post| %>
     <p>
-      <div class="center-align card-panel">  
+      <div class="center-align card-panel">
+      <div class="flow-text" style="font-size :17px; text-align:justify">  
       <%= simple_format(post.message).html_safe %>
-      <div class="text-bold"><%= post.user.email %></div> at <%= post.created_at.strftime('%d-%m-%Y') %><br>
+      </div>
+      <div style="font-size: 13px">
+      <div style="font-weight: bold; color: blue; font-size :15px"><%= post.user.email %></div> at <%= post.created_at.strftime('%d-%m-%Y') %><br>
+      </div>
       <%= post.likes.all.length %>
 
       <% my_like = Like.where(user_id: current_user.id, post_id: post.id)%>
@@ -31,8 +35,10 @@
   </div>
 
   <% else %>
+  <div class="card-panel center-align">
     <p>Please sign up or login to use Acebook!</p>
-    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <div class="btn waves-effect #fafafa grey lighten-5"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> </div>
+    <div class="btn waves-effect #fafafa grey lighten-5"><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> </div>
   <% end %>
+  </div>
 </p>
