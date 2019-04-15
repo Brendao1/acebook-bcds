@@ -59,6 +59,11 @@ First, clone this repository. Then:
  how to install and run it.
  how to run tests.
 
+## Screenshots of deployed app
+
+Acebook's landing page
+![](Acebook2_landing_page.png)
+
 ## References
 
 - [Project Setup](https://github.com/makersacademy/course/blob/master/engineering_projects/project_setup.md)
