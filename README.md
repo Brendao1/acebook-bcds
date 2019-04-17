@@ -62,7 +62,16 @@ First, clone this repository. Then:
 ## Screenshots of deployed app
 
 Acebook's landing page
-![](Acebook2_landing_page.png)
+![](/images/Acebook2_landing_page.png)
+
+Acebook's posts feed. User can add/remove a like. 
+![](/images/Acebook4_posts.png)
+
+User can creat a post
+![](/images/Acebook6_new_post_by_me.png)
+
+User can update/delete their own posts
+![](/images/Acebook8_new_post_with_like.png)
 
 ## References
 
